@@ -2220,7 +2220,10 @@ JSONEditor.defaults.editors.string = JSONEditor.AbstractEditor.extend({
 
     if(this.format) this.input.setAttribute('data-schemaformat',this.format);
 
-    this.control = this.theme.getFormControl(this.label, this.input, this.description, this.infoButton);
+    /*var containerEditBoton= document.createElement('div');
+    containerEditBoton.classList.add("btn-group");
+    containerEditBoton.style.margin = "5px";
+
 
     var btnEdit = document.createElement("BUTTON");        // Create a <button> element
     var t = document.createTextNode(" Editar");  
@@ -2242,12 +2245,13 @@ JSONEditor.defaults.editors.string = JSONEditor.AbstractEditor.extend({
          showPropertieSchemaEdit(self);
     });
 
-    this.control.appendChild(btnEdit);
+    containerEditBoton.appendChild(btnEdit);*/
 
+    this.infoButton = getOptionButtons(self);
 
+    this.control = this.theme.getFormControl(this.label, this.input, this.description, this.infoButton);
 
     
-
     this.container.appendChild(this.control);
 
     // Any special formatting that needs to happen after the input is added to the dom
@@ -2539,7 +2543,7 @@ JSONEditor.defaults.editors.hidden = JSONEditor.AbstractEditor.extend({
 
     if (this.format) this.input.setAttribute('data-schemaformat', this.format);
 
-    var btnEdit = document.createElement("BUTTON");        // Create a <button> element
+    /*var btnEdit = document.createElement("BUTTON");        // Create a <button> element
     var t = document.createTextNode(" Editar");  
 
     var node = document.createElement("I");
@@ -2558,7 +2562,9 @@ JSONEditor.defaults.editors.hidden = JSONEditor.AbstractEditor.extend({
 
     btnEdit.addEventListener('click',function(e) {
          showPropertieSchemaEdit(self);
-    });
+    }); */
+
+    this.infoButton = getOptionButtons(self);
 
 
 
@@ -5789,7 +5795,10 @@ JSONEditor.defaults.editors.select = JSONEditor.AbstractEditor.extend({
       self.onInputChange();
     });
 
-    this.control = this.theme.getFormControl(this.label, this.input, this.description, this.infoButton);
+    /*var containerEditBoton= document.createElement('div');
+    containerEditBoton.classList.add("btn-group");
+    containerEditBoton.style.margin = "5px";
+
 
     var btnEdit = document.createElement("BUTTON");        // Create a <button> element
     var t = document.createTextNode(" Editar");  
@@ -5805,11 +5814,19 @@ JSONEditor.defaults.editors.select = JSONEditor.AbstractEditor.extend({
     btnEdit.classList.add("btn");
     btnEdit.classList.add("btn-default");
     btnEdit.classList.add("json-editor-btn-edit");
-    this.control.appendChild(btnEdit);
+    btnEdit.classList.add("json-schema-btn-edit");
 
     btnEdit.addEventListener('click',function(e) {
          showPropertieSchemaEdit(self);
     });
+
+    containerEditBoton.appendChild(btnEdit);*/
+
+    this.infoButton = getOptionButtons(self);
+
+    this.control = this.theme.getFormControl(this.label, this.input, this.description, this.infoButton);
+
+    
 
     this.container.appendChild(this.control);
 
