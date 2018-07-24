@@ -31,7 +31,6 @@
     <div class="container">
       <div class='medium-12-columns'>
         <button id='submit' class='btn btn-primary'>Almacenar (console.log)</button>
-        <button id='restore' class='btn btn-warning'>Resetear</button>
         <button id='submit' class='btn btn-danger' onclick="showRequeridosModal()"> <i class="fa fa-check-square-o"></i> Requeridos</button>
         <span id='valid_indicator' class='label'></span>
       </div>
