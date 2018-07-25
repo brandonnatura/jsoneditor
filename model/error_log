@@ -1,0 +1,40 @@
+[25-Jul-2018 10:47:45 America/Bogota] PHP Fatal error:  Class 'MongoDB\Driver\Manager' not found in /home/naturaso/public_html/json_editor/vendor/mongodb/mongodb/src/Client.php on line 87
+[25-Jul-2018 10:56:44 America/Bogota] PHP Parse error:  syntax error, unexpected '$pass' (T_VARIABLE) in /home/naturaso/public_html/json_editor/model/persona.php on line 42
+[25-Jul-2018 10:58:53 America/Bogota] PHP Parse error:  syntax error, unexpected '$pass' (T_VARIABLE) in /home/naturaso/public_html/json_editor/model/persona.php on line 42
+[25-Jul-2018 11:03:48 America/Bogota] PHP Parse error:  syntax error, unexpected '$pass' (T_VARIABLE) in /home/naturaso/public_html/json_editor/model/persona.php on line 42
+[25-Jul-2018 11:03:50 America/Bogota] PHP Parse error:  syntax error, unexpected '$pass' (T_VARIABLE) in /home/naturaso/public_html/json_editor/model/persona.php on line 42
+[25-Jul-2018 11:06:35 America/Bogota] PHP Parse error:  syntax error, unexpected '$pass' (T_VARIABLE) in /home/naturaso/public_html/json_editor/model/persona.php on line 42
+[25-Jul-2018 11:06:39 America/Bogota] PHP Parse error:  syntax error, unexpected '$pass' (T_VARIABLE) in /home/naturaso/public_html/json_editor/model/persona.php on line 42
+[25-Jul-2018 11:07:27 America/Bogota] PHP Parse error:  syntax error, unexpected '$pass' (T_VARIABLE) in /home/naturaso/public_html/json_editor/model/persona.php on line 42
+[25-Jul-2018 11:07:42 America/Bogota] PHP Parse error:  syntax error, unexpected '$pass' (T_VARIABLE) in /home/naturaso/public_html/json_editor/model/persona.php on line 54
+[25-Jul-2018 11:08:03 America/Bogota] PHP Parse error:  syntax error, unexpected 'conectar_PostgreSQL' (T_STRING) in /home/naturaso/public_html/json_editor/model/persona.php on line 58
+[25-Jul-2018 15:40:56 America/Bogota] PHP Warning:  pg_query(): Query failed: ERROR:  syntax error at or near &quot;asdasd&quot;
+LINE 1: UPDATE  qa_posts SET p.content=&quot;{&quot;asdasd&quot;:&quot;asdasdasd&quot;,&quot;Nuevo...
+                                          ^ in /home/naturaso/public_html/json_editor/model/qa_post.php on line 20
+[25-Jul-2018 15:42:23 America/Bogota] PHP Warning:  pg_query(): Query failed: ERROR:  syntax error at or near &quot;asdasd&quot;
+LINE 1: UPDATE  qa_posts SET p.content=&quot;{&quot;asdasd&quot;:&quot;asdasdasd&quot;,&quot;Nuevo...
+                                          ^ in /home/naturaso/public_html/json_editor/model/qa_post.php on line 20
+[25-Jul-2018 15:42:31 America/Bogota] PHP Warning:  pg_query(): Query failed: ERROR:  syntax error at or near &quot;asdasd&quot;
+LINE 1: UPDATE  qa_posts SET p.content=&quot;{&quot;asdasd&quot;:&quot;asdasdasd&quot;,&quot;Nuevo...
+                                          ^ in /home/naturaso/public_html/json_editor/model/qa_post.php on line 20
+[25-Jul-2018 15:42:44 America/Bogota] PHP Warning:  pg_query(): Query failed: ERROR:  column &quot;p&quot; of relation &quot;qa_posts&quot; does not exist
+LINE 1: UPDATE  qa_posts SET p.content='{&quot;asdasd&quot;:&quot;asdasdasd&quot;,&quot;Nuevo...
+                             ^ in /home/naturaso/public_html/json_editor/model/qa_post.php on line 20
+[25-Jul-2018 15:43:20 America/Bogota] PHP Warning:  pg_query(): Query failed: ERROR:  invalid input syntax for type json
+LINE 1: UPDATE  qa_categories SET schema='' WHERE  categoryid=3
+                                         ^
+DETAIL:  The input string ended unexpectedly.
+CONTEXT:  JSON data, line 1:  in /home/naturaso/public_html/json_editor/model/qa_post.php on line 24
+[25-Jul-2018 15:49:53 America/Bogota] PHP Warning:  Illegal string offset 'schema' in /home/naturaso/public_html/json_editor/model/qa_post.php on line 15
+[25-Jul-2018 15:49:53 America/Bogota] PHP Warning:  pg_query(): Query failed: ERROR:  invalid input syntax for type json
+LINE 1: UPDATE  qa_categories SET schema='{' WHERE  categoryid=3
+                                         ^
+DETAIL:  The input string ended unexpectedly.
+CONTEXT:  JSON data, line 1: { in /home/naturaso/public_html/json_editor/model/qa_post.php on line 26
+[25-Jul-2018 15:54:49 America/Bogota] PHP Fatal error:  Cannot use object of type stdClass as array in /home/naturaso/public_html/json_editor/model/qa_post.php on line 17
+[25-Jul-2018 16:04:06 America/Bogota] PHP Parse error:  syntax error, unexpected ')' in /home/naturaso/public_html/json_editor/model/qa_post.php on line 23
+[25-Jul-2018 16:05:02 America/Bogota] PHP Parse error:  syntax error, unexpected ')' in /home/naturaso/public_html/json_editor/model/qa_post.php on line 23
+[25-Jul-2018 16:05:11 America/Bogota] PHP Parse error:  syntax error, unexpected ')' in /home/naturaso/public_html/json_editor/model/qa_post.php on line 23
+[25-Jul-2018 17:03:39 America/Bogota] PHP Warning:  pg_query(): Query failed: ERROR:  syntax error at or near &quot;LIMIT&quot;
+LINE 1: ...N  qa_categories c USING (categoryid) WHERE  postid= LIMIT 1
+                                                                ^ in /home/naturaso/public_html/json_editor/model/qa_post.php on line 48

@@ -22,8 +22,14 @@
   </head>
   <body>
     
+    <?php
+      if (isset($_GET['id'])){
+          $id=$_GET['id'];
+      }
+    ?>
     
     <div class="container">
+      <input id="qa_post_id" type="hidden" value="<?php echo $id; ?>" >
       <div id='editor_holder' class='medium-12 columns'></div>
       <div id='editor'></div>
     </div>

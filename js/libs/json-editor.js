@@ -5268,7 +5268,7 @@ JSONEditor.defaults.editors.multiple = JSONEditor.AbstractEditor.extend({
       }
     }
 
-    console.log(schema);
+    //console.log(schema);
 
     var editor = self.jsoneditor.getEditorClass(schema);
 

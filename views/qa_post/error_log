@@ -1,0 +1,2 @@
+[25-Jul-2018 11:57:30 America/Bogota] PHP Warning:  require_once(.../../model/connect_db.php): failed to open stream: No such file or directory in /home/naturaso/public_html/json_editor/views/qa_post/index.php on line 21
+[25-Jul-2018 11:57:30 America/Bogota] PHP Fatal error:  require_once(): Failed opening required '.../../model/connect_db.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/naturaso/public_html/json_editor/views/qa_post/index.php on line 21

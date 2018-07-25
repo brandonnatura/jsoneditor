@@ -8,26 +8,41 @@ $(document).ready(function(){
 
 
 function getSchema(){
+  var qaPostId= $('#qa_post_id').val();
 	$.ajax({
-        url: "../../model/persona.php",
-        data: {getSchemaPersona:1},
+        url: "../../model/qa_post.php",
+        data: {getSchema:qaPostId},
         type: 'POST',
 //        dataType: '',
         success: function (json) {
-            currentSchema=JSON.parse(json);
-            localStorage.setItem('_currentSchema',json);
+            var currentSchema=JSON.parse(json);
+
+            console.log(currentSchema.content);
+            var startValue =  JSON.parse(currentSchema.content) ;
+
+            localStorage.setItem('_currentSchema', JSON.stringify({schema: JSON.parse(currentSchema.schema)}));
             var element = document.getElementById('editor_holder');
 
 
-		    // Initialize the editor with a JSON schema
-		    editor = new JSONEditor(document.getElementById('editor_holder'),{
-		        schema: currentSchema.schema
-		    });
-		       // Hook up the submit button to log to the console
-		     document.getElementById('submit').addEventListener('click',function() {
-		        // Get the value from the editor
-		        console.log(editor.getValue());
-		     });
+    		    // Initialize the editor with a JSON schema
+    		    editor = new JSONEditor(document.getElementById('editor_holder'),{
+    		        schema: JSON.parse(currentSchema.schema),
+                startval: startValue
+    		    });
+
+
+    		       // Hook up the submit button to log to the console
+    		    document.getElementById('submit').addEventListener('click',function() {
+    		        // Get the value from the editor
+                
+                 
+                var data = JSON.stringify(editor.getValue());
+                var newSchema = localStorage.getItem('_currentSchema');
+                var categoryid =  currentSchema.categoryid;
+                updateSchema(qaPostId, newSchema, data, categoryid);
+    		     });
+
+
 
         },
         error: function (xhr, status) {
@@ -36,6 +51,36 @@ function getSchema(){
         complete: function (xhr, status) {
         }
     });
+}
+
+
+function updateSchema(qaPostId, newSchema, data, categoryid){
+
+  $.ajax({
+        url: "../../model/qa_post.php",
+        data: {updateSchemaQaPost:{
+                qaPostId: qaPostId,
+                newSchema:  newSchema,
+                content: data,
+                categoryid: categoryid
+          }
+        },
+        type: 'POST',
+//        dataType: '',
+        success: function (json) {
+            //var currentSchema=JSON.parse(json);
+            alert(json);
+
+
+        },
+        error: function (xhr, status) {
+            alert('Ocurrió un problema: ' + status);
+        },
+        complete: function (xhr, status) {
+        }
+  });
+
+
 }
 
 function setNewSchema(){
@@ -50,6 +95,7 @@ function setNewSchema(){
 	oldSchema.schema.properties=newProperties;
 	localStorage.setItem('_currentSchema',JSON.stringify(oldSchema));
 	reloadSchema();
+
   }catch(ex){
       alert("Error en el Schema!");
   }
