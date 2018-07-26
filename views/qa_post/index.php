@@ -32,7 +32,13 @@ $result = pg_query($query) or die('La consulta fallo: ' . pg_last_error());
 
 
   <div class="container">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <a class="btn btn-success " href="crear.php" role="button"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</a>
+      </div>
+    </div>
     <div class='medium-12 columns'>
+      <legend>Registros</legend>
       <table class="table table-hover table-bordered">
         <thead class="thead-dark"> 
           <tr>

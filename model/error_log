@@ -38,3 +38,23 @@ CONTEXT:  JSON data, line 1: { in /home/naturaso/public_html/json_editor/model/q
 [25-Jul-2018 17:03:39 America/Bogota] PHP Warning:  pg_query(): Query failed: ERROR:  syntax error at or near &quot;LIMIT&quot;
 LINE 1: ...N  qa_categories c USING (categoryid) WHERE  postid= LIMIT 1
                                                                 ^ in /home/naturaso/public_html/json_editor/model/qa_post.php on line 48
+[26-Jul-2018 15:20:04 America/Bogota] PHP Warning:  pg_query(): Query failed: ERROR:  syntax error at or near &quot;LIMIT&quot;
+LINE 1: ...N  qa_categories c USING (categoryid) WHERE  postid= LIMIT 1
+                                                                ^ in /home/naturaso/public_html/json_editor/model/qa_post.php on line 48
+[26-Jul-2018 15:20:46 America/Bogota] PHP Warning:  pg_query(): Query failed: ERROR:  syntax error at or near &quot;LIMIT&quot;
+LINE 1: ...N  qa_categories c USING (categoryid) WHERE  postid= LIMIT 1
+                                                                ^ in /home/naturaso/public_html/json_editor/model/qa_post.php on line 48
+[26-Jul-2018 15:20:55 America/Bogota] PHP Warning:  pg_query(): Query failed: ERROR:  syntax error at or near &quot;LIMIT&quot;
+LINE 1: ...N  qa_categories c USING (categoryid) WHERE  postid= LIMIT 1
+                                                                ^ in /home/naturaso/public_html/json_editor/model/qa_post.php on line 48
+[26-Jul-2018 15:44:28 America/Bogota] PHP Warning:  pg_query(): Query failed: ERROR:  syntax error at or near &quot;LIMIT&quot;
+LINE 1: ...N  qa_categories c USING (categoryid) WHERE  postid= LIMIT 1
+                                                                ^ in /home/naturaso/public_html/json_editor/model/qa_post.php on line 48
+[26-Jul-2018 17:12:12 America/Bogota] PHP Warning:  pg_query(): Query failed: ERROR:  syntax error at end of input
+LINE 1: UPDATE  qa_posts SET content='{}' WHERE  postid=
+                                                        ^ in /home/naturaso/public_html/json_editor/model/qa_post.php on line 28
+[26-Jul-2018 17:59:27 America/Bogota] PHP Parse error:  syntax error, unexpected '.' in /home/naturaso/public_html/json_editor/model/qa_post.php on line 34
+[26-Jul-2018 18:00:23 America/Bogota] PHP Parse error:  syntax error, unexpected '.' in /home/naturaso/public_html/json_editor/model/qa_post.php on line 38
+[26-Jul-2018 18:01:46 America/Bogota] PHP Warning:  pg_query(): Query failed: ERROR:  syntax error at or near &quot;)&quot;
+LINE 1: ...tent ) VALUES ('2','@Prueba','{&quot;Nombre&quot;:&quot;Jaime&quot;}',) RETURNIN...
+                                                             ^ in /home/naturaso/public_html/json_editor/model/qa_post.php on line 37

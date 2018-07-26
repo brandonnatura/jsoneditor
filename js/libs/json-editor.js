@@ -3496,7 +3496,15 @@ JSONEditor.defaults.editors.object = JSONEditor.AbstractEditor.extend({
         e.stopPropagation();
         self.toggleAddProperty();
       });
+
+      // Boton requeridos
+      var addrequeridos_button = this.getButton('Properties','edit','Requeridos');
+      addrequeridos_button.addEventListener('click',function(e) {
+          showRequeridosModal()
+      });
+      
       this.addproperty_controls.appendChild(this.addproperty_button);
+      this.addproperty_controls.appendChild(addrequeridos_button);
       this.addproperty_controls.appendChild(this.addproperty_holder);
       this.refreshAddProperties();
     }

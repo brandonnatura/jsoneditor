@@ -9,50 +9,108 @@ $(document).ready(function(){
 
 function getSchema(){
   var qaPostId= $('#qa_post_id').val();
-	$.ajax({
-        url: "../../model/qa_post.php",
-        data: {getSchema:qaPostId},
-        type: 'POST',
-//        dataType: '',
-        success: function (json) {
-            var currentSchema=JSON.parse(json);
-
-            console.log(currentSchema.content);
-            var startValue =  JSON.parse(currentSchema.content) ;
-
-            localStorage.setItem('_currentSchema', JSON.stringify({schema: JSON.parse(currentSchema.schema)}));
-            var element = document.getElementById('editor_holder');
 
 
-    		    // Initialize the editor with a JSON schema
-    		    editor = new JSONEditor(document.getElementById('editor_holder'),{
-    		        schema: JSON.parse(currentSchema.schema),
-                startval: startValue
-    		    });
+  if(qaPostId != ''){
+
+  	$.ajax({
+          url: "../../model/qa_post.php",
+          data: {getSchema:qaPostId},
+          type: 'POST',
+          success: function (json) {
+              var currentSchema=JSON.parse(json);
+
+              console.log(currentSchema.content);
+              var startValue =  JSON.parse(currentSchema.content) ;
+
+              localStorage.setItem('_currentSchema', JSON.stringify({schema: JSON.parse(currentSchema.schema)}));
+              var element = document.getElementById('editor_holder');
 
 
-    		       // Hook up the submit button to log to the console
-    		    document.getElementById('submit').addEventListener('click',function() {
-    		        // Get the value from the editor
+      		    // Initialize the editor with a JSON schema
+      		    editor = new JSONEditor(document.getElementById('editor_holder'),{
+      		        schema: JSON.parse(currentSchema.schema),
+                  startval: startValue,
+                  disable_collapse: true,
+                  disable_edit_json: true,
+                  form_name_root: currentSchema.titleqaposts
+      		    });
+
+
+      		       // Hook up the submit button to log to the console
+      		    document.getElementById('submit').addEventListener('click',function() {
+      		        // Get the value from the editor
+                  
+                   
+                  var data = JSON.stringify(editor.getValue());
+                  var newSchema = localStorage.getItem('_currentSchema');
+                  var categoryid =  currentSchema.categoryid;
+                  updateSchema(qaPostId, newSchema, data, categoryid);
+      		     });
+
+
+
+          },
+          error: function (xhr, status) {
+              alert('Ocurrió un problema: ' + status);
+          },
+          complete: function (xhr, status) {
+          }
+      });
+  }else{
+
+      var categoyId =  $('#selectCategorias').val();
+
+      if(categoyId != '0' ){
+        var qaPostId = null;
+        $.ajax({
+            url: "../../model/qa_post.php",
+            data: {getSchemaByCategory:categoyId},
+            type: 'POST',
+            success: function (json) {
+                var currentSchema=JSON.parse(json);
+
+                localStorage.setItem('_currentSchema', JSON.stringify({schema: JSON.parse(currentSchema.schema)}));
+                var element = document.getElementById('editor_holder');
+
+
+                if(editor) editor.destroy();
+
+                // Initialize the editor with a JSON schema
+                editor = new JSONEditor(document.getElementById('editor_holder'),{
+                    schema: JSON.parse(currentSchema.schema),
+                    disable_collapse: true,
+                    disable_edit_json: true,
+                    form_name_root: currentSchema.title
+                });
+
                 
-                 
-                var data = JSON.stringify(editor.getValue());
-                var newSchema = localStorage.getItem('_currentSchema');
-                var categoryid =  currentSchema.categoryid;
-                updateSchema(qaPostId, newSchema, data, categoryid);
-    		     });
+
+
+                   // Hook up the submit button to log to the console
+                document.getElementById('submit').addEventListener('click',function() {
+                    // Get the value from the editor
+                    var data = JSON.stringify(editor.getValue());
+                    var newSchema = localStorage.getItem('_currentSchema');
+                    var categoryid =  currentSchema.categoryid;
+                    updateSchema(qaPostId, newSchema, data, categoryid);
+                 });
 
 
 
-        },
-        error: function (xhr, status) {
-            alert('Ocurrió un problema: ' + status);
-        },
-        complete: function (xhr, status) {
-        }
-    });
-}
+            },
+            error: function (xhr, status) {
+                alert('Ocurrió un problema: ' + status);
+            },
+            complete: function (xhr, status) {
+            }
+        });
+      }
 
+  }
+
+
+  }
 
 function updateSchema(qaPostId, newSchema, data, categoryid){
 
@@ -66,7 +124,6 @@ function updateSchema(qaPostId, newSchema, data, categoryid){
           }
         },
         type: 'POST',
-//        dataType: '',
         success: function (json) {
             //var currentSchema=JSON.parse(json);
             alert(json);
@@ -153,7 +210,9 @@ function reloadSchema(data=null){
   if(editor) editor.destroy();
   editor = new JSONEditor($editor,{
     schema: schema,
-    startval: newStartValue
+    startval: newStartValue,
+    disable_collapse: true,
+    disable_edit_json: true,
 
   });
 
@@ -294,13 +353,14 @@ function getOptionButtons(input){
 
     var containerEditBoton= document.createElement('div');
     containerEditBoton.classList.add("btn-group");
+    containerEditBoton.classList.add("options-qa-post");
     containerEditBoton.style.margin = "5px";
 
 
     // Boton editar
 
     var btnEdit = document.createElement("BUTTON");        // Create a <button> element
-    var t = document.createTextNode(" Editar");  
+    //var t = document.createTextNode(" Editar");  
 
     var node = document.createElement("I");
     node.classList.add("fa");
@@ -309,7 +369,7 @@ function getOptionButtons(input){
     btnEdit.appendChild(node);
 
     // Create a text node
-    btnEdit.appendChild(t);
+    //btnEdit.appendChild(t);
     btnEdit.classList.add("btn");
     btnEdit.classList.add("btn-default");
     btnEdit.classList.add("json-editor-btn-edit");
